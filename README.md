@@ -13,7 +13,7 @@ Add it in your root build.gradle at the end of repositories:
 Add the dependency
 
         dependencies {
-	        implementation 'com.github.zavazapp:ZZDateTimePicker:Tag'
+	        implementation 'com.github.zavazapp:ZZDateTimePicker:1.0.2'
 	}
 
 ZZDatePicker
