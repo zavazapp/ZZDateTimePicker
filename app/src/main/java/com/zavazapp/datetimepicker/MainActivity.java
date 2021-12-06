@@ -7,41 +7,75 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.zavazapp.datetimepickerlib.DateCallback;
 import com.zavazapp.datetimepickerlib.TimeCallback;
+import com.zavazapp.datetimepickerlib.ZZDatePicker;
 import com.zavazapp.datetimepickerlib.ZZTimePicker;
 
-import java.time.LocalTime;
 import java.util.Calendar;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
     Calendar c = Calendar.getInstance();
-    TextView t;
-    LocalTime lt;
+    TextView dateTextView, dateMillisTextView, timeTextView, timeMillisTextView;
+    long seatedTime;
+    long seatedDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        t = findViewById(R.id.textView);
-        ImageView iv = findViewById(R.id.imageView);
+        dateTextView = findViewById(R.id.dateTextView);
+        dateMillisTextView = findViewById(R.id.dateMillisTextView);
 
-        iv.setOnClickListener(new View.OnClickListener() {
+        timeTextView = findViewById(R.id.timeTextView);
+        timeMillisTextView = findViewById(R.id.timeMillisTextView);
+
+        ImageView dateImage = findViewById(R.id.dateImage);
+        ImageView timeImage = findViewById(R.id.timeImage);
+
+        Calendar c1 = Calendar.getInstance();
+
+        dateImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ZZTimePicker zzTimePicker =
-                        new ZZTimePicker(MainActivity.this)
-                        .withDateCallback(new TimeCallback() {
-                            @Override
-                            public void onTimeSet(LocalTime time, String stringTime) {
-                                t.setText(stringTime);
-                                lt = time;
-                            }
-                        })
-                        .withLocalTime(lt == null ? LocalTime.now() : lt)
-                        .show();
-
+                        new ZZDatePicker(MainActivity.this)
+                                .withDateCallback(new DateCallback() {
+                                    @Override
+                                    public void onDateSet(long mills, String stringDate) {
+                                        dateTextView.setText(stringDate);
+                                        dateMillisTextView.setText(String.valueOf(mills));
+                                        c.setTime(new Date(mills));
+                                        seatedDate = mills;
+                                    }
+                                })
+                                .withCalendar(c)
+                                //.withMillis(seatedDate == 0 ? System.currentTimeMillis() : seatedDate)
+                                .show();
             }
         });
+
+
+        timeImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                        new ZZTimePicker(MainActivity.this)
+                                .withTimeCallback(new TimeCallback() {
+                                    @Override
+                                    public void onTimeSet(long mills, String stringTime) {
+                                        timeTextView.setText(stringTime);
+                                        timeMillisTextView.setText(String.valueOf(mills));
+                                        c.setTime(new Date(mills));
+                                        seatedTime = mills;
+                                    }
+                                })
+                                .withCalendar(c)
+                                //.withMillis(seatedTime == 0 ? System.currentTimeMillis() : seatedTime)
+                                .show();
+            }
+        });
+
+
     }
 }

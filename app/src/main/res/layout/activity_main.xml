@@ -7,25 +7,61 @@
     tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_launcher_foreground"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/dateImage"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="32dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.120000005"/>
+        app:srcCompat="@android:drawable/ic_menu_my_calendar" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/dateTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="fdsa"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="date"
+        android:layout_marginStart="32dp"
+        app:layout_constraintBottom_toBottomOf="@+id/dateImage"
+        app:layout_constraintStart_toEndOf="@+id/dateImage"
+        app:layout_constraintTop_toTopOf="@+id/dateImage" />
+
+    <TextView
+        android:id="@+id/dateMillisTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="mills"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/dateTextView"
+        app:layout_constraintTop_toTopOf="@+id/dateTextView" />
+
+    <ImageView
+        android:id="@+id/timeImage"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="32dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.13999999" />
+        app:layout_constraintTop_toBottomOf="@+id/dateImage"
+        app:srcCompat="@android:drawable/ic_lock_idle_alarm" />
+
+    <TextView
+        android:id="@+id/timeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="time"
+        android:layout_marginStart="32dp"
+        app:layout_constraintBottom_toBottomOf="@+id/timeImage"
+        app:layout_constraintStart_toEndOf="@+id/timeImage"
+        app:layout_constraintTop_toTopOf="@+id/timeImage" />
+
+    <TextView
+        android:id="@+id/timeMillisTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="mills"
+        app:layout_constraintBottom_toBottomOf="@+id/timeTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/timeTextView"
+        app:layout_constraintTop_toTopOf="@+id/timeTextView" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

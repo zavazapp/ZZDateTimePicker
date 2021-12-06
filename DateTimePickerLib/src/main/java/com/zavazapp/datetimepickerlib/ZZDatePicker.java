@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.widget.DatePicker;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -24,10 +27,10 @@ public class ZZDatePicker {
         d.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                Calendar c = Calendar.getInstance();
-                c.set(year, month, dayOfMonth);
-                Date date = new Date(c.getTimeInMillis());
-                dateCallback.onDateSet(date, DateUtils.getStringDateFromMills(date.getTime()));
+                LocalDate date = LocalDate.of(year, month+1, dayOfMonth);
+                LocalDateTime ldt = date.atStartOfDay();
+                long mills = ldt.toInstant(ZoneId.systemDefault().getRules().getOffset(ldt)).toEpochMilli();
+                dateCallback.onDateSet(mills, DateUtils.getStringDateFromMills(date));
             }
         });
         return this;
