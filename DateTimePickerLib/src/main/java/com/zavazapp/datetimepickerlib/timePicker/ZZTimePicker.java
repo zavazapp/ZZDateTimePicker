@@ -1,8 +1,11 @@
-package com.zavazapp.datetimepickerlib;
+package com.zavazapp.datetimepickerlib.timePicker;
 
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.widget.TimePicker;
+
+import com.zavazapp.datetimepickerlib.utils.DateUtils;
+import com.zavazapp.datetimepickerlib.utils.Exceptions;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -33,10 +36,9 @@ public class ZZTimePicker {
         return this;
     }
 
-    public ZZTimePicker show() {
+    public void show() {
         TimePickerDialog t = new TimePickerDialog(context, listener, ldt.getHour(), ldt.getMinute(), true);
         t.show();
-        return this;
     }
 
     public ZZTimePicker withCalendar(Calendar c){
@@ -52,5 +54,6 @@ public class ZZTimePicker {
         this.ldt = LocalDateTime.ofInstant(Instant.ofEpochMilli(millis), ZoneId.systemDefault());
         return this;
     }
+
 
 }

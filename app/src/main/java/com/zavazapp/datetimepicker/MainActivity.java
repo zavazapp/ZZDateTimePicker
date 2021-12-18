@@ -7,10 +7,12 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.zavazapp.datetimepickerlib.DateCallback;
-import com.zavazapp.datetimepickerlib.TimeCallback;
-import com.zavazapp.datetimepickerlib.ZZDatePicker;
-import com.zavazapp.datetimepickerlib.ZZTimePicker;
+import com.zavazapp.datetimepickerlib.datePicker.DateCallback;
+import com.zavazapp.datetimepickerlib.floatPicker.FloatCallback;
+import com.zavazapp.datetimepickerlib.floatPicker.ZZFloatPicker;
+import com.zavazapp.datetimepickerlib.timePicker.TimeCallback;
+import com.zavazapp.datetimepickerlib.datePicker.ZZDatePicker;
+import com.zavazapp.datetimepickerlib.timePicker.ZZTimePicker;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -54,8 +56,6 @@ public class MainActivity extends AppCompatActivity {
                                 //.withMillis(seatedDate == 0 ? System.currentTimeMillis() : seatedDate)
                                 .show();
             }
-
-
         });
 
 
@@ -78,6 +78,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        ImageView floatImage = findViewById(R.id.floatImage);
+        TextView floatTextView = findViewById(R.id.floatTextView);
 
+        floatImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new ZZFloatPicker(MainActivity.this)
+                        .withValue(0.5f)
+                        .withDecimals(3)
+                        .withFloatCallback(new FloatCallback() {
+                            @Override
+                            public void onFloatSet(float floatNumber, String stringFloat) {
+                                floatTextView.setText(stringFloat);
+                            }
+                        })
+                        .show();
+            }
+        });
     }
 }

@@ -1,6 +1,8 @@
-package com.zavazapp.datetimepickerlib;
+package com.zavazapp.datetimepickerlib.utils;
 
 import android.content.res.Resources;
+
+import com.zavazapp.datetimepickerlib.R;
 
 import org.joda.time.Period;
 import org.joda.time.format.PeriodFormatter;

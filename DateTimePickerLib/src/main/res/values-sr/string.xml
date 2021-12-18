@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="days"> dana</string>
+    <string name="day"> dan</string>
+    <string name="months"> meseca</string>
+    <string name="week">Nedelja </string>
+    <string name="weeks">nedelja</string>
+    <string name="years">Godina</string>
+    <string name="save_yes">Sacuvaj</string>
+    <string name="cancel">Otkazi</string>
+</resources>

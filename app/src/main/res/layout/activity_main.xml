@@ -63,5 +63,25 @@
         app:layout_constraintStart_toEndOf="@+id/timeTextView"
         app:layout_constraintTop_toTopOf="@+id/timeTextView" />
 
+    <ImageView
+        android:id="@+id/floatImage"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timeImage"
+        app:srcCompat="@android:drawable/ic_menu_upload" />
+
+    <TextView
+        android:id="@+id/floatTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text="float"
+        app:layout_constraintBottom_toBottomOf="@+id/floatImage"
+        app:layout_constraintStart_toEndOf="@+id/floatImage"
+        app:layout_constraintTop_toTopOf="@+id/floatImage" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

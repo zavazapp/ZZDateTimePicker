@@ -1,8 +1,10 @@
-package com.zavazapp.datetimepickerlib;
+package com.zavazapp.datetimepickerlib.datePicker;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.widget.DatePicker;
+
+import com.zavazapp.datetimepickerlib.utils.DateUtils;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
