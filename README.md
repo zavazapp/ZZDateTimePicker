@@ -50,3 +50,16 @@ ZZTimePicker
                   //.withMillis(seatedTime == 0 ? System.currentTimeMillis() : seatedTime)
                   .show();
           }
+
+ZZFloatPicker
+
+	new ZZFloatPicker(MainActivity.this)
+                        .withValue(0.5f)
+                        .withDecimals(3)
+                        .withFloatCallback(new FloatCallback() {
+                            @Override
+                            public void onFloatSet(float floatNumber, String stringFloat) {
+                                floatTextView.setText(stringFloat);
+                            }
+                        })
+                        .show();
