@@ -82,6 +82,25 @@
         app:layout_constraintStart_toEndOf="@+id/floatImage"
         app:layout_constraintTop_toTopOf="@+id/floatImage" />
 
+    <ImageView
+        android:id="@+id/intImage"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/floatImage"
+        app:srcCompat="@android:drawable/ic_menu_add" />
+
+    <TextView
+        android:id="@+id/intTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text="int"
+        app:layout_constraintBottom_toBottomOf="@+id/intImage"
+        app:layout_constraintStart_toEndOf="@+id/intImage"
+        app:layout_constraintTop_toTopOf="@+id/intImage" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

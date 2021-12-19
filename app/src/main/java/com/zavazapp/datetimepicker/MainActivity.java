@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.zavazapp.datetimepickerlib.datePicker.DateCallback;
 import com.zavazapp.datetimepickerlib.floatPicker.FloatCallback;
 import com.zavazapp.datetimepickerlib.floatPicker.ZZFloatPicker;
+import com.zavazapp.datetimepickerlib.intPicker.IntCallback;
+import com.zavazapp.datetimepickerlib.intPicker.ZZIntPicker;
 import com.zavazapp.datetimepickerlib.timePicker.TimeCallback;
 import com.zavazapp.datetimepickerlib.datePicker.ZZDatePicker;
 import com.zavazapp.datetimepickerlib.timePicker.ZZTimePicker;
@@ -85,12 +87,30 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 new ZZFloatPicker(MainActivity.this)
-                        .withValue(0.5f)
-                        .withDecimals(3)
+                        .setValue(0.5f)
+                        .setDecimals(3)
                         .withFloatCallback(new FloatCallback() {
                             @Override
                             public void onFloatSet(float floatNumber, String stringFloat) {
                                 floatTextView.setText(stringFloat);
+                            }
+                        })
+                        .show();
+            }
+        });
+
+        ImageView intImage = findViewById(R.id.intImage);
+        TextView intTextView = findViewById(R.id.intTextView);
+
+        intImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new ZZIntPicker(MainActivity.this)
+                        .setValue(28)
+                        .withIntCallback(new IntCallback() {
+                            @Override
+                            public void onIntSet(int intNumber, String intString) {
+                                intTextView.setText(intString);
                             }
                         })
                         .show();

@@ -1,4 +1,4 @@
-package com.zavazapp.datetimepickerlib.floatPicker;
+package com.zavazapp.datetimepickerlib.intPicker;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -11,27 +11,25 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.zavazapp.datetimepickerlib.R;
-import com.zavazapp.datetimepickerlib.utils.NumberUtils;
 
-public class FloatPickerDialog {
+public class IntPickerDialog {
     private Context context;
-    private float result;
-    private int decimals;
-    private FloatCallback floatCallback;
+    private int result;
+    private IntCallback intCallback;
+    private final int increment = 1;
 
-    public FloatPickerDialog(Context context, float result, int decimals, FloatCallback floatCallback) {
+    public IntPickerDialog(Context context, int result, IntCallback intCallback) {
         this.context = context;
-        this.floatCallback = floatCallback;
+        this.intCallback = intCallback;
         this.result = result;
-        this.decimals = decimals;
     }
 
-    public void show(float value ){
+    public void show(int value ){
         AlertDialog a = new AlertDialog.Builder(context)
                 .setPositiveButton(R.string.save_yes, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        floatCallback.onFloatSet(NumberUtils.round(result, decimals), String.valueOf(NumberUtils.round(result, decimals)));
+                        intCallback.onIntSet(result, String.valueOf(result));
                     }
                 })
                 .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
@@ -52,11 +50,11 @@ public class FloatPickerDialog {
     }
 
 
-    private View getDialogView(ListView rootView, float value) {
-        View dialogView = LayoutInflater.from(context).inflate(R.layout.float_measure_picker, rootView, false);
+    private View getDialogView(ListView rootView, int value) {
+        View dialogView = LayoutInflater.from(context).inflate(R.layout.int_measure_picker, rootView, false);
 
         EditText e1 = dialogView.findViewById(R.id.weightEditText);
-        e1.setText(String.valueOf(NumberUtils.round(value, decimals)));
+        e1.setText(String.valueOf(value));
 
         Button reduceButton = dialogView.findViewById(R.id.reduceButton);
         Button raiseButton = dialogView.findViewById(R.id.raiseButton);
@@ -64,8 +62,8 @@ public class FloatPickerDialog {
         raiseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                result += 0.1F;
-                e1.setText(String.valueOf(NumberUtils.round(result, decimals)));
+                result += increment;
+                e1.setText(String.valueOf(result));
 
             }
         });
@@ -73,14 +71,14 @@ public class FloatPickerDialog {
         reduceButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                result -= 0.1F;
-                e1.setText(String.valueOf(NumberUtils.round(result, decimals)));
+                result -= increment;
+                e1.setText(String.valueOf(result));
             }
         });
 
-        FloatTextWatcher.setTextWatcher(e1, decimals, new OnTextChangedCallback() {
+        IntTextWatcher.setTextWatcher(e1, new OnTextChangedCallback() {
             @Override
-            public void onTextChanged(float measure) {
+            public void onTextChanged(int measure) {
                 result = measure;
             }
         });

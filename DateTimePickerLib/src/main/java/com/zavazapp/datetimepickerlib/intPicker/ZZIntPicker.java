@@ -1,36 +1,31 @@
-package com.zavazapp.datetimepickerlib.floatPicker;
+package com.zavazapp.datetimepickerlib.intPicker;
 
 import android.content.Context;
 
 import com.zavazapp.datetimepickerlib.utils.Exceptions;
 
-public class ZZFloatPicker {
-    private FloatCallback floatCallback;
-    private float value;
-    private int decimals;
+public class ZZIntPicker {
+    private IntCallback floatCallback;
+    private int value;
     private Context context;
 
-    public ZZFloatPicker(Context context) {
+    public ZZIntPicker(Context context) {
         this.context = context;
     }
 
-    public ZZFloatPicker withFloatCallback(FloatCallback floatCallback) {
+    public ZZIntPicker withIntCallback(IntCallback floatCallback) {
         this.floatCallback = floatCallback;
         return this;
     }
-    public ZZFloatPicker setValue(float value){
+    public ZZIntPicker setValue(int value){
         this.value = value;
         return this;
     }
 
-    public ZZFloatPicker setDecimals(int decimals){
-        this.decimals = decimals;
-        return this;
-    }
 
     public void show() {
         validate();
-        FloatPickerDialog t = new FloatPickerDialog(context, value, decimals, floatCallback);
+        IntPickerDialog t = new IntPickerDialog(context, value, floatCallback);
         t.show(value);
     }
 
